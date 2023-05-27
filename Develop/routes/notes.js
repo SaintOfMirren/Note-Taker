@@ -1,13 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { readFile, writeFile } = require('../fsUtils');
-const generateUUID = require('../uuid');
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
+const { readFile, writeFile } = require('../helpers/fsUtils');
+const generateUUID = require('../helpers/uuid');
   
-  app.post('/notes', (req, res) => {
+  router.post('/', (req, res) => {
     const { title, content } = req.body;
     const newNote = { title, content, id: generateUUID() };
   
@@ -33,7 +29,7 @@ app.listen(port, () => {
     });
   });
   
-  app.get('/notes/:id', (req, res) => {
+  router.get('/:id', (req, res) => {
     const noteId = req.params.id;
   
     readFile('notes.json', (err, data) => {
