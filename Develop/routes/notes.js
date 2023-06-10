@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const { readFile, writeFile } = require('../helpers/fsUtils');
 const generateUUID = require('../helpers/uuid');
   
@@ -50,5 +51,9 @@ const generateUUID = require('../helpers/uuid');
       res.json(note);
     });
   });
+
+  router.get('/', (req, res) => {
+    res.render('notes');
+    });
 
   module.exports = router;

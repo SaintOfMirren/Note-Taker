@@ -5,6 +5,7 @@ const notesRoutes = require('./notes');
 
 router.get('/', (req, res) => {
     res.send('Welcome to the Note Taker!');
+    console.log("blah");
   });
 
 router.use('/notes', notesRoutes);
